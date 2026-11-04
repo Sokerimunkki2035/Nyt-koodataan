@@ -21,20 +21,29 @@
             box-sizing: border-box;
         }
         h1 {
-            font-size: 2rem;
-            margin-bottom: 8px;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
             color: #4CAF50;
         }
         p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #b0b0b0;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+        }
+        /* Valokuvan tyylit */
+        .site-image {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
         }
         .qr-card {
             background: #ffffff;
-            padding: 24px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
             display: inline-block;
         }
         #qrcode {
@@ -43,9 +52,9 @@
             align-items: center;
         }
         .link-text {
-            margin-top: 24px;
-            font-size: 0.95rem;
-            color: #aaa;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #888;
             word-break: break-all;
             max-width: 90%;
         }
@@ -56,6 +65,9 @@
     <h1>Nyt koodataan!</h1>
     <p>Skannaa koodi puhelimellasi</p>
 
+    <!-- Tikka-kuva upotettuna -->
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA___<REDACTED_BASE64_DATA_FOR_BREVITY>..." alt="Tikka puussa" class="site-image">
+
     <div class="qr-card">
         <div id="qrcode"></div>
     </div>
@@ -63,15 +75,14 @@
     <div class="link-text" id="target-link"></div>
 
     <script>
-        // Sivuosoitteesi GitHub Pagesissa:
         const targetUrl = "https://sokerimunkki2035.github.io/Nyt-koodataan/";
 
         document.getElementById("target-link").innerText = targetUrl;
 
         new QRCode(document.getElementById("qrcode"), {
             text: targetUrl,
-            width: 240,
-            height: 240,
+            width: 200,
+            height: 200,
             colorDark : "#000000",
             colorLight : "#ffffff",
             correctLevel : QRCode.CorrectLevel.H
