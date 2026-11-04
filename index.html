@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyt koodataan!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #121212;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: #4CAF50;
+        }
+        p {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            margin-bottom: 25px;
+        }
+        .qr-card {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            display: inline-block;
+        }
+        #qrcode {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .link-text {
+            margin-top: 24px;
+            font-size: 0.95rem;
+            color: #aaa;
+            word-break: break-all;
+            max-width: 90%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Nyt koodataan!</h1>
+    <p>Skannaa koodi puhelimellasi</p>
+
+    <div class="qr-card">
+        <div id="qrcode"></div>
+    </div>
+
+    <div class="link-text" id="target-link"></div>
+
+    <script>
+        // Sivuosoitteesi GitHub Pagesissa:
+        const targetUrl = "https://sokerimunkki2035.github.io/Nyt-koodataan/";
+
+        document.getElementById("target-link").innerText = targetUrl;
+
+        new QRCode(document.getElementById("qrcode"), {
+            text: targetUrl,
+            width: 240,
+            height: 240,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+    </script>
+
+</body>
+</html>
