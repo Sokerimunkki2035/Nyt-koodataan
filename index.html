@@ -30,6 +30,19 @@
             color: #b0b0b0;
             margin-bottom: 20px;
         }
+        /* Lauseen tyyli */
+        .quote-box {
+            background: #1e1e1e;
+            border-left: 4px solid #4CAF50;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            max-width: 320px;
+            font-size: 0.95rem;
+            font-style: italic;
+            color: #e0e0e0;
+            line-height: 1.4;
+        }
         .site-image {
             width: 100%;
             max-width: 280px;
@@ -64,8 +77,13 @@
     <h1>Nyt koodataan!</h1>
     <p>Skannaa koodi puhelimellasi</p>
 
-    <!-- Tikka-kuva upotettuna suoraan koodiin -->
-    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA_-9sAQwACAQEBAQECAQEBAgICAgIEAwICAgIFBAQDBQUDBAQGBQUFBQUGBQYGBQUGBgcHCAgHBwcJCQkJDAzODw0JCAgJCP/isEAIQACEQMREQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgICgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQzNzg4NWVFRHJKm5sdTVGR0jJSlhZVdXZ3Z4+QkRFRqbmJTVJKSVpqrN0hXY3TVVldnZ2h4gTmFh4iJSlhVJuarK6hpr6v4+Pr[span_0](start_span)[span_0](end_span)r7vP09fX2+Pn6+OEJEQACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQzNzg4NWVFRHJKm5sdTVGR0jJSlhZVdXZ3Z4+QkRFRqbmJTVJKSVpqrN0hXY3TVVldnZ2h4gTmFh4iJSlhVJuarK6hpr6v4+Prr7vP09fX2+Pn6+OEJEQD/2gAMAwEAAhEDEQA/APxXf73uU3LqRz9lY19R07h8K5t5Q6bT9/rW7V4TnbJ0d53z5oT8vj/ACR6rD7s/wA6PevDufXvvp228u0Vz2j028L7rR6X+x21/2e5/8Arb+u7n7D519d1Tzfvftf8d689r5Y/Zz3/f/AO5688u/3n/2Q==" alt="Tikka puussa" class="site-image">
+    <!-- Yleisön suosikkilause -->
+    <div class="quote-box">
+        "Syksy saapuu metsään, jossa mänty, koivu ja tammi siirtyvät vuorotellen uuteen, ihmeelliseen kierre-vaiheeseen."
+    </div>
+
+    <!-- Tikka-kuva -->
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA_-9sAQwACAQEBAQECAQEBAgICAgIEAwICAgIFBAQDBQUDBAQGBQUFBQUGBQYGBQUGBgcHCAgHBwcJCQkJDAzODw0JCAgJCP/isEAIQACEQMREQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgICgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQzNzg4NWVFRHJKm5sdTVGR0jJSlhZVdXZ3Z4+QkRFRqbmJTVJKSVpqrN0hXY3TVVldnZ2h4gTmFh4iJSlhVJuarK6hpr6v4+Prr7vP09fX2+Pn6+OEJEQACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQzNzg4NWVFRHJKm5sdTVGR0jJSlhZVdXZ3Z4+QkRFRqbmJTVJKSVpqrN0hXY3TVVldnZ2h4gTmFh4iJSlhVJuarK6hpr6v4+Prr7vP09fX2+Pn6+OEJEQD/2gAMAwEAAhEDEQA/APxXf73uU3LqRz9lY19R07h8K5t5Q6bT9/rW7V4TnbJ0d53z5oT8vj/ACR6rD7s/wA6PevDufXvvp228u0Vz2j028L7rR6X+x21/2e5/8Arb+u7n7D519d1Tzfvftf8d689r5Y/Zz3/f/AO5688u/3n/2Q==" alt="Tikka puussa" class="site-image">
 
     <div class="qr-card">
         <div id="qrcode"></div>
@@ -88,4 +106,3 @@
 
 </body>
 </html>
-
