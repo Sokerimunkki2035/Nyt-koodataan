@@ -28,9 +28,8 @@
         p {
             font-size: 1rem;
             color: #b0b0b0;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
-        /* Lauseen tyyli */
         .quote-box {
             background: #1e1e1e;
             border-left: 4px solid #4CAF50;
@@ -42,6 +41,44 @@
             font-style: italic;
             color: #e0e0e0;
             line-height: 1.4;
+        }
+        /* Pelialueen tyylit */
+        .game-container {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            max-width: 320px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .card {
+            background: #2a2a2a;
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .card.flipped {
+            background: #388E3C;
+            transform: rotateY(180deg);
+        }
+        .card.matched {
+            background: #1b5e20;
+            border-color: #81c784;
+            opacity: 0.6;
         }
         .site-image {
             width: 100%;
@@ -77,13 +114,21 @@
     <h1>Nyt koodataan!</h1>
     <p>Skannaa koodi puhelimellasi</p>
 
-    <!-- Yleisön suosikkilause -->
+    <!-- Yleisön lause -->
     <div class="quote-box">
         "Syksy saapuu metsään, jossa mänty, koivu ja tammi siirtyvät vuorotellen uuteen, ihmeelliseen kierre-vaiheeseen."
     </div>
 
+    <!-- Peli -->
+    <div class="game-container">
+        <h3>Pieni Luontomuistipeli</h3>
+        <p style="font-size: 0.85rem; color: #aaa;">Etsi kaikki kolme paria!</p>
+        <div class="game-grid" id="grid"></div>
+        <p id="game-status" style="margin-top: 10px; font-weight: bold; color: #81c784;"></p>
+    </div>
+
     <!-- Tikka-kuva -->
-    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA_-9sAQwACAQEBAQECAQEBAgICAgIEAwICAgIFBAQDBQUDBAQGBQUFBQUGBQYGBQUGBgcHCAgHBwcJCQkJDAzODw0JCAgJCP/isEAIQACEQMREQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgICgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQzNzg4NWVFRHJKm5sdTVGR0jJSlhZVdXZ3Z4+QkRFRqbmJTVJKSVpqrN0hXY3TVVldnZ2h4gTmFh4iJSlhVJuarK6hpr6v4+Prr7vP09fX2+Pn6+OEJEQACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQzNzg4NWVFRHJKm5sdTVGR0jJSlhZVdXZ3Z4+QkRFRqbmJTVJKSVpqrN0hXY3TVVldnZ2h4gTmFh4iJSlhVJuarK6hpr6v4+Prr7vP09fX2+Pn6+OEJEQD/2gAMAwEAAhEDEQA/APxXf73uU3LqRz9lY19R07h8K5t5Q6bT9/rW7V4TnbJ0d53z5oT8vj/ACR6rD7s/wA6PevDufXvvp228u0Vz2j028L7rR6X+x21/2e5/8Arb+u7n7D519d1Tzfvftf8d689r5Y/Zz3/f/AO5688u/3n/2Q==" alt="Tikka puussa" class="site-image">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA_-9sAQwACAQEBAQECAQEBAgICAgIEAwICAgIFBAQDBQUDBAQGBQUFBQUGBQYGBQUGBgcHCAgHBwcJCQkJDAzODw0JCAgJCP/isEAIQACEQMREQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgICgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQzNzg4NWVFRHJKm5sdTVGR0jJSlhZVdXZ3Z4+QkRFRqbmJTVJKSVpqrN0hXY3TVVldnZ2h4gTmFh4iJSlhVJuarK6hpr6v4+Prr7vP09fX2+Pn6+OEJEQACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQzNzg4NWVFRHJKm5sdTVGR0jJSlhVJuarK6hpr6v4+Prr7vP09fX2+Pn6+OEJEQD/2gAMAw00EAAhEDEQA/APxXf73uU3LqRz9lY19R07h8K5t5Q6bT9/rW7V4TnbJ0d53z5oT8vj/ACR6rD7s/A0PevDufXvvp228u0Vz2j028L7rR6X+x21/2e5/8Arb+u7n7D519d1Tzfvftf8d689r5Y/Zz3/f/AO5688u/3n/2Q==" alt="Tikka puussa" class="site-image">
 
     <div class="qr-card">
         <div id="qrcode"></div>
@@ -92,6 +137,7 @@
     <div class="link-text" id="target-link"></div>
 
     <script>
+        // QR-koodi
         const targetUrl = "https://sokerimunkki2035.github.io/Nyt-koodataan/";
         document.getElementById("target-link").innerText = targetUrl;
         new QRCode(document.getElementById("qrcode"), {
@@ -102,6 +148,54 @@
             colorLight : "#ffffff",
             correctLevel : QRCode.CorrectLevel.H
         });
+
+        // Muistipelin koodi
+        const items = ['🌲', '🌲', '🍃', '🍃', '🦅', '🦅'];
+        items.sort(() => Math.random() - 0.5); // Sekoitetaan kortit
+
+        const grid = document.getElementById('grid');
+        let flippedCards = [];
+        let matchedPairs = 0;
+
+        items.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.dataset.value = item;
+            card.dataset.index = index;
+            card.innerText = '❓';
+
+            card.addEventListener('click', () => {
+                if (flippedCards.length < 2 && !card.classList.contains('flipped') && !card.classList.contains('matched')) {
+                    card.classList.add('flipped');
+                    card.innerText = item;
+                    flippedCards.push(card);
+
+                    if (flippedCards.length === 2) {
+                        setTimeout(checkMatch, 600);
+                    }
+                }
+            });
+
+            grid.appendChild(card);
+        });
+
+        function checkMatch() {
+            const [c1, c2] = flippedCards;
+            if (c1.dataset.value === c2.dataset.value) {
+                c1.classList.add('matched');
+                c2.classList.add('matched');
+                matchedPairs++;
+                if (matchedPairs === 3) {
+                    document.getElementById('game-status').innerText = 'Löysit kaikki parit! 🎉';
+                }
+            } else {
+                c1.classList.remove('flipped');
+                c2.classList.remove('flipped');
+                c1.innerText = '❓';
+                c2.innerText = '❓';
+            }
+            flippedCards = [];
+        }
     </script>
 
 </body>
